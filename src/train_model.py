@@ -38,7 +38,7 @@ def feature_ranges(frame):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--data", default=str(config.active_training_csv()))
+    ap.add_argument("--data", default=str(config.active_csv()))
     ap.add_argument("--C", type=float, default=config.DEFAULT_C)
     args = ap.parse_args()
 

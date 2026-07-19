@@ -5,21 +5,19 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 MODEL_DIR = ROOT / "models"
-SAMPLE_CSV = DATA_DIR / "sample_tracks.csv"
 REAL_CSV = DATA_DIR / "real_tracks.csv"
 MODEL_PATH = MODEL_DIR / "chart_model.joblib"
 META_PATH = MODEL_DIR / "model_meta.json"
 
-# Features the model uses.
+def active_csv():
+    return REAL_CSV if REAL_CSV.exists() else None
+
+# Features the model uses
 #
 # Design notes:
 #  * We dropped the notebook's main_artist one-hot: it doesn't generalise to new
 #    artists and dominated the coefficients. Numeric artist priors replace it.
-#  * We use release_MONTH (categorical, cyclical) instead of release_YEAR.
-#    A label scoping a future single always has "next year" as the year, so year
-#    can't discriminate between candidates and would force the model to
-#    extrapolate past its training range. Release month is a genuine decision
-#    and stays inside the trained range.
+#  * We use release_MONTH instead of release_YEAR.
 
 AUDIO_FEATURES = [
     "danceability", "energy", "loudness", "speechiness", "acousticness",
@@ -30,8 +28,8 @@ AUDIO_FEATURES = [
 PRIOR_FEATURES = [
     "prior_song_count", # how many charting songs the artist already has
     "prior_top10_count", # how many of those hit the top 10
-    "prior_best_peak", # best (lowest) peak position to date; 101 = none
-    "prior_avg_peak", # average peak position to date; 101 = none
+    "prior_best_peak", # best (lowest) peak position to date, 101 = none
+    "prior_avg_peak", # average peak position to date, 101 = none
 ]
 
 CONTEXT_FEATURES = ["spotify_track_popularity"] # artist momentum
@@ -73,14 +71,14 @@ GENRE_CHOICES = [
     "latin", "folk_acoustic", "reggae", "metal", "jazz", "other",
 ]
 
-# INPUT LAYER
+# Input Layer
 #
-# The model was trained on Spotify's technical 0-1 scores. Record managers don't
+# The model was trained on Spotify's technical 0-1 scores. User's don't
 # think in "acousticness = 0.34". FEATURE_UI describes each audio feature in
 # plain language with anchored ends, and the two helpers convert between the
 # slider value a manager sets and the number the model expects.
 
-LOUDNESS_DB_RANGE = (-20.0, -3.0)   # quiet/dynamic .. loud/compressed
+LOUDNESS_DB_RANGE = (-20.0, -3.0)   # quiet/dynamic to loud/compressed
 
 FEATURE_UI = {
     "danceability": {
@@ -193,7 +191,7 @@ DEFAULT_COMMIT_THRESHOLD = 0.35
 #   realised(budget) = PROMO_FLOOR + (1 - PROMO_FLOOR) * (1 - e^(-budget/SCALE))
 #
 #   PROMO_FLOOR : fraction of potential you capture with $0 paid promo (organic).
-#   PROMO_SCALE : spend ($) at which you've captured ~63% of the promo-driven gain.
+#   PROMO_SCALE : spend ($) at which you've captured ~63% of the promo driven gain.
 #
 # This gives an interior optimal budget (spend too little and you leave upside on
 # the table vs. spend too much and extra dollars stop paying for themselves), which
@@ -203,5 +201,5 @@ DEFAULT_COMMIT_THRESHOLD = 0.35
 PROMO_FLOOR = 0.45
 PROMO_SCALE = 70_000
 
-# Logistic regression inverse regularisation strength exposed to the user.
+# Logistic regression strength exposed to the user.
 DEFAULT_C = 1.0

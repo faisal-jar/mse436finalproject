@@ -1,0 +1,145 @@
+{
+  "cv_accuracy_mean": 0.5857618249244184,
+  "cv_accuracy_std": 0.004410835399092835,
+  "C": 1.0,
+  "n_train_rows": 24329,
+  "class_balance": {
+    "1": 12672,
+    "2": 8930,
+    "3": 2727
+  },
+  "classification_report": {
+    "Hit contender": {
+      "precision": 0.35,
+      "recall": 0.12844036697247707,
+      "f1-score": 0.18791946308724833,
+      "support": 545.0
+    },
+    "Charting potential": {
+      "precision": 0.4788448623237072,
+      "recall": 0.3992161254199328,
+      "f1-score": 0.4354198473282443,
+      "support": 1786.0
+    },
+    "Long shot": {
+      "precision": 0.6474661630468996,
+      "recall": 0.811439842209073,
+      "f1-score": 0.7202380952380952,
+      "support": 2535.0
+    },
+    "accuracy": 0.5836415947390053,
+    "macro avg": {
+      "precision": 0.49210367512353564,
+      "recall": 0.44636544486716095,
+      "f1-score": 0.44785913521786264,
+      "support": 4866.0
+    },
+    "weighted avg": {
+      "precision": 0.5522592781409846,
+      "recall": 0.5836415947390053,
+      "f1-score": 0.5560788175378887,
+      "support": 4866.0
+    }
+  },
+  "feature_ranges": {
+    "danceability": {
+      "min": 0.231,
+      "max": 0.918,
+      "median": 0.6079999999999999
+    },
+    "energy": {
+      "min": 0.1479999999999999,
+      "max": 0.962,
+      "median": 0.634
+    },
+    "loudness": {
+      "min": -18.15836,
+      "max": -2.6318399999999964,
+      "median": -8.205
+    },
+    "speechiness": {
+      "min": 0.0248,
+      "max": 0.42,
+      "median": 0.0413
+    },
+    "acousticness": {
+      "min": 0.00024828000000000003,
+      "max": 0.936,
+      "median": 0.195
+    },
+    "instrumentalness": {
+      "min": 0.0,
+      "max": 0.8409999999999999,
+      "median": 5e-06
+    },
+    "liveness": {
+      "min": 0.034428,
+      "max": 0.824,
+      "median": 0.131
+    },
+    "valence": {
+      "min": 0.098028,
+      "max": 0.969,
+      "median": 0.622
+    },
+    "tempo": {
+      "min": 70.31532,
+      "max": 195.12244000000004,
+      "median": 118.913
+    },
+    "key": {
+      "min": 0.0,
+      "max": 11.0,
+      "median": 5.0
+    },
+    "time_signature": {
+      "min": 3.0,
+      "max": 4.0,
+      "median": 4.0
+    },
+    "spotify_track_duration_ms": {
+      "min": 117149.92,
+      "max": 429469.4400000003,
+      "median": 214826.0
+    },
+    "prior_song_count": {
+      "min": 0.0,
+      "max": 52.0,
+      "median": 2.0
+    },
+    "prior_top10_count": {
+      "min": 0.0,
+      "max": 15.0,
+      "median": 0.0
+    },
+    "prior_best_peak": {
+      "min": 1.0,
+      "max": 101.0,
+      "median": 18.0
+    },
+    "prior_avg_peak": {
+      "min": 1.3333333333333333,
+      "max": 101.0,
+      "median": 48.4
+    },
+    "spotify_track_popularity": {
+      "min": 0.0,
+      "max": 85.0,
+      "median": 43.0
+    }
+  },
+  "genre_choices": [
+    "country",
+    "electronic",
+    "folk_acoustic",
+    "hiphop",
+    "jazz",
+    "latin",
+    "metal",
+    "other",
+    "pop",
+    "reggae",
+    "rnb_soul",
+    "rock"
+  ]
+}

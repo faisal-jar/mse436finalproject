@@ -53,7 +53,7 @@ def group_genre(raw_genre):
             return bucket
     return "other"
 
-# Prior (artist track-record) features
+# Prior (artist track record) features
 
 def _build_priors(df):
     """
@@ -103,8 +103,8 @@ def build_training_frame(df):
     if any(c not in d.columns for c in config.PRIOR_FEATURES):
         d = _build_priors(d)
 
-    # Derive release_month for real data. Prefer a true release date; fall back
-    # to the chart-week date (WeekID) as a proxy for when the song was working.
+    # Derive release_month for real data
+
     if "release_month" not in d.columns:
         date_col = next((c for c in ["release_date", "WeekID", "WeekId"]
                          if c in d.columns), None)
