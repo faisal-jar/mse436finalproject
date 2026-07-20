@@ -1,14 +1,14 @@
 # Chart Compass, an IDSS for release single strategy
 
-**Course:** MSE 436: Decision Support Systems
-**Stakeholder:** an Artists and Repertoire team / marketing lead at a record label
-**Decision:** *how much promotional budget to commit behind a
-candidate single, and through which channels, before it is released.*
+MSE 436: Decision Support Systems - Final Project  
+
+**Decision Supported:** how much promotional budget to commit behind a
+candidate single, and through which channels, before it is released.  
 
 Chart Compass predicts a track's likely Billboard chart tier from its audio
 profile and the artist's track record, then converts that prediction into an
 **adjustable release decision**: a recommended budget, a channel
-split, and the expected value of committing that spend.
+split, and the expected value of committing that spend.  
 
 ---
 
