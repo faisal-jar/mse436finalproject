@@ -1,6 +1,6 @@
 # Chart Compass, an IDSS for release single strategy
 
-MSE 436: Decision Support Systems - Final Project  
+**MSE 436: Decision Support Systems - Final Project**  
 
 **Decision Supported:** how much promotional budget to commit behind a
 candidate single, and through which channels, before it is released.  
