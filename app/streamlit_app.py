@@ -237,7 +237,7 @@ with left:
         textposition="outside"))
     fig.update_layout(yaxis_tickformat=".0%", yaxis_range=[0, 1.1],
                       height=300, margin=dict(t=10, b=10))
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
     st.subheader("Recommended Action")
     st.markdown(f"### {plan['action']}\n{plan['note']}")
@@ -245,7 +245,7 @@ with left:
     ch = plan["channel_dollars"]
     ch_df = pd.DataFrame({"Channel": [k.replace('_', ' ').title() for k in ch],
                           "Allocation ($)": list(ch.values())})
-    st.dataframe(ch_df, hide_index=True, use_container_width=True)
+    st.dataframe(ch_df, hide_index=True, width='stretch')
 
 with right:
     st.subheader("Expected Value of This Decision")
@@ -267,7 +267,7 @@ with right:
         marker_color=[config.TIERS[c]["color"] for c in order]))
     fig2.update_layout(height=260, margin=dict(t=10, b=10),
                        yaxis_title="$ expected", showlegend=False)
-    st.plotly_chart(fig2, use_container_width=True)
+    st.plotly_chart(fig2, width='stretch')
     st.caption("Each bar is that tier's chance times its value, before promo. "
                "They sum to the song's baseline potential.")
 
@@ -293,7 +293,7 @@ fig3.add_vline(x=plan["committed_budget"], line_dash="dot", line_color=tier["col
                annotation_text="current plan")
 fig3.update_layout(height=320, xaxis_title="Committed Budget ($)",
                    yaxis_title="Expected Net Value ($)", margin=dict(t=10))
-st.plotly_chart(fig3, use_container_width=True)
+st.plotly_chart(fig3, width='stretch')
 
 with st.expander("Model, Data & Limitations"):
     st.markdown(f"""

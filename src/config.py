@@ -13,11 +13,11 @@ def active_csv():
     return REAL_CSV if REAL_CSV.exists() else None
 
 # Features the model uses
-#
+
 # Design notes:
-#  * We dropped the notebook's main_artist one-hot: it doesn't generalise to new
-#    artists and dominated the coefficients. Numeric artist priors replace it.
-#  * We use release_MONTH instead of release_YEAR.
+# We dropped the notebook's main_artist one-hot: it doesn't generalise to new
+# artists and dominated the coefficients. Numeric artist priors replace it.
+# We use release_MONTH instead of release_YEAR.
 
 AUDIO_FEATURES = [
     "danceability", "energy", "loudness", "speechiness", "acousticness",
@@ -72,13 +72,13 @@ GENRE_CHOICES = [
 ]
 
 # Input Layer
-#
+
 # The model was trained on Spotify's technical 0-1 scores. User's don't
 # think in "acousticness = 0.34". FEATURE_UI describes each audio feature in
 # plain language with anchored ends, and the two helpers convert between the
 # slider value a manager sets and the number the model expects.
 
-LOUDNESS_DB_RANGE = (-20.0, -3.0)   # quiet/dynamic to loud/compressed
+LOUDNESS_DB_RANGE = (-20.0, -3.0) # quiet/dynamic to loud/compressed
 
 FEATURE_UI = {
     "danceability": {
@@ -158,8 +158,8 @@ def model_to_display(feat, val):
         return (val - lo) / (hi - lo) * 100.0
     return val
 
-# DECISION 
-#
+# Decision 
+
 # Each tier maps to a release action with a recommended promo budget and a
 # channel split. These are defaults that the user can override in the UI.
 # Overriding changes the recommended decision.
@@ -185,7 +185,7 @@ DEFAULT_TIER_REVENUE = {3: 450_000, 2: 90_000, 1: 12_000}
 DEFAULT_COMMIT_THRESHOLD = 0.35
 
 # Promo response model:
-#
+
 # We model the realised fraction of expected revenue as:
 #
 #   realised(budget) = PROMO_FLOOR + (1 - PROMO_FLOOR) * (1 - e^(-budget/SCALE))
